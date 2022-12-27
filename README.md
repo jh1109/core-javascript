@@ -12,6 +12,3 @@
 
 
 [JavaScript Core 브랜치](https://www.naver.com)
-
-
-- [x] 체크박스 
