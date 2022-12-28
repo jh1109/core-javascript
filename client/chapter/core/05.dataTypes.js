@@ -49,7 +49,7 @@ console.log(typeof Symbol('uid'));
 // Object
 // = key와 value의 집합
 
-const user = {  //'객체 리터럴'이라고함
+const user = {  //'객체 리터럴'이라고함. 객체 literal은 {}로.
   name: "juhee",
   age: 27,
 }
@@ -58,13 +58,15 @@ console.log(user);
 // Array(배열이라는 뜻)
 // let list = new Array()
 // Array는 value만 가짐
-let list = [10,100,1000,1,2,3]  //'배열 리터럴' 이라는 방법. 값을 바로 지정해준다
+let list = [10,100,1000,1,2,3]  //'배열 리터럴' 이라는 방법. 값을 바로 지정해준다. 배열 literal은 []로.
 
-// function
-function sum(a,b) {
-  return a+b
+// function : function은 붕어빵틀을 만드는 박스라고 생각하자
+function sum(a,b) { // a,b,는 매개변수(parameter)
+  return a+b  // return을 해주지 않으면 어떠한 인자들을 넣고 function를 작성해도 indefined 값으로 나옴.
 }
-console.log(sum(452,357));
+console.log(sum(452,357));  //여기서 452, 357의 값들은 argument(인자)라고함.
 // this
+
+console.log("안녕"-1);
 
 
