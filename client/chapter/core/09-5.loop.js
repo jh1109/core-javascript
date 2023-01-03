@@ -106,7 +106,12 @@ const randomUser = {
 
 
 /* 검색해서 찾아보기
-Object.entries
-Object.keys
-Object.values
+Object.keys : object의 key 값들을 배열로 반환함
+Object.values : object의 value 값들을 배열로 반환함
+Object.entries : key와 value 값을 함께 배열로 반환함
 */
+console.log(Object.keys(randomUser));
+console.log(Object.keys(randomUser.location));
+console.log(Object.keys(location)); // 그냥 location하면 Object 내의 location 메서드의 key 값들이 나열됨.
+console.log(Object.values(randomUser.location));
+console.log(Object.entries(randomUser.location));
