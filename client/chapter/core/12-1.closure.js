@@ -46,7 +46,6 @@ function first(){
   
 }
 
-
 const value = first();
 
 //과제 6
