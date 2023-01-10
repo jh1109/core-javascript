@@ -24,16 +24,22 @@ const h1 = getNode('h1');
 // - node.append(노드나 문자열) – node 끝에 노드를 삽입
 h1.append(div);
 // - node.prepend(노드나 문자열) – node 맨 앞에 노드를 삽입
-h1.prepend(div);
+let div2 = div.cloneNode(false);
+h1.prepend(div2);
 // - node.before(노드나 문자열) – node 이전에 노드를 삽입
-h1.before(div);
+let section = document.createElement('section');
+section.textContent = 'section 입니다.'
+div.append(section);
+let div3 = div.cloneNode(true);
+h1.before(div3);
 // - node.after(노드나 문자열) – node 다음에 노드를 삽입
 // - node.replaceWith(노드나 문자열) – node를 대체
 // - node.remove() – node를 제거
-// h1.remove()
+div3.remove()
+div2.remove()
+div.remove()
 
-//중복으로 넣어주는 방법은?
-// 하나를 만들어놓은 node로 중복 추가하는 방법!
+//중복으로 넣어주는 방법은? 복사해서 추가하기 
 
 
 /* '오래된' 메서드 ----------------------------------------------------------- */
@@ -59,69 +65,53 @@ h1.before(div);
 // - "afterend" – elem 바로 다음에 html을 삽입
 
 //너무 어렵다.. 말도 어렵고 이름도 헷갈리고.. 함수로 만들어버리자!
-function isNumericString(data){
-  data = Number(data);
-  return !isNaN(data) && typeof data === 'number';
-}
 
-function insertBefore(node,text){
-  if (isNumericString(node) === true){
-    throw new Error('올바른 node 값을 확인하여 주십시오.');
-  }
-  
-  if ( typeof node === 'string'){
-    node = getNode(node);
-  }
-
-
-  if(node.nodeType !== document.ELEMENT_NODE){
-
-    typeError
-    throw new TypeError('insertBefore 함수의 첫 번째 인자는 ELEMENT 노드여야 합니다.');
-  }
-
-  node.insertAdjacentHTML('beforebegin',text);
-}
-
-insertBefore('h1','<div class="box">새롭게 추가된 element입니다.</div>')
+insertBefore('h1','<div class="box">새롭게 추가된 element1입니다.</div>')
 // insertBefore('123','<div class="box">새롭게 추가된 element입니다.</div>')
 
-function insertFirst(node, text) {
-  if(typeof node === 'string'){
-    node = getNode(node);
-  }
-  node.insertAdjacentHTML('afterbegin',text);
-}
 
-insertFirst('h1','<div class="box">새롭게 추가된 element입니다.</div>')
+insertFirst('h1','<div class="box">새롭게 추가된 element2입니다.</div>')
 
-function insertLast(node, text) {
-  if(typeof node === 'string'){
-    node = getNode(node);
-  }
-  node.insertAdjacentHTML('beforeend',text);
-}
 
-insertLast('h1','<div class="box">새롭게 추가된 element입니다.</div>')
+insertLast('h1','<div class="box">새롭게 추가된 element3입니다.</div>')
 
-function insertAfter(node, text) {
-  if(typeof node === 'string'){
-    node = getNode(node);
-  }
-  node.insertAdjacentHTML('afterend',text);
-}
 
-insertAfter('h1','<div class="box">새롭게 추가된 element입니다.</div>')
+insertAfter('h1','<div class="box">새롭게 추가된 element4입니다.</div>')
 
-//이걸 다 합하는 함수는?
+
+/* -------------------------------------------------------------------------- */
+/*                                     과제                                     */
+/* -------------------------------------------------------------------------- */
+
+// 요소 삭제하기
 /*
-function insert (node,text,n){
-  if(typeof node === 'string'){
-    node = getNode(node);
-  } else {
-    if n === 1 {
-      insertBefore(node,text)
-    }
+function clear(elem) {
+  while (elem.firstChild) {
+    elem.firstChild.remove();
   }
+}
+
+function clear(elem) {
+  elem.data = '';
+  elem.textContent = ''; //같은 의미
 }
 */
+
+//리스트 생성하기
+/*
+let ul = document.createElement('ul');
+    document.body.append(ul);
+
+    while (true) {
+      let data = prompt("Enter the text for the list item", "");
+
+      if (!data) {
+        break;
+      }
+
+      let li = document.createElement('li');
+      li.textContent = data;
+      ul.append(li);
+    }
+*/
+
