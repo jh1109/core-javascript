@@ -17,10 +17,16 @@ function setAttr(node,prop,value){
     throw new TypeError('setAttr 함수의 두 번째 인자는 string이어야 합니다.');
   }
   // prop는 문자로만 받아야하니까!
+
+  if (prop.includes('data')) {
+    let rest = prop.slice(5);
+    node.dataset[rest] = value;
+  }
   if(!value) {
     throw new SyntaxError('setAttr 함수의 세 번째 인자는 필수값입니다.');
   }
   // 이렇게 제한사항을 넣어두는게 validation
+  
   node.setAttribute(prop, value);
   // return node.attributes; // 이건 내가 확인해보고 싶어서 넣은 값.
 

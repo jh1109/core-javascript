@@ -68,7 +68,8 @@ setAttr('.first','data-value','hello');
 // console.log(setAttr('.first',data-value,'hello'));
 // console.log(setAttr('.first','data-value',));
 
-/* 그냥 data-를 붙인다고 다 database가 되지 않음!*/
+/* 그냥 data-를 붙인다고 다 database가 되지 않음!
+dataset을 사용하여 접근해야 안전하게 피표준 속성에 접근한 것임!*/
 
 // get과 set을 함께해주는 함수 만들기
 
@@ -78,4 +79,33 @@ console.log(attr('.first','id','container'));
 console.log(attr('.first','id'));
 
 
+/* -------------------------------------------------------------------------- */
+/*                                     과제                                     */
+/* -------------------------------------------------------------------------- */
 
+// 속성 가져오기
+/*
+attr 라는 속성을 가진 요소를 찾을 때는,
+let elem = document.querySelector('[attr]'); 로 찾는다.
+*/
+
+// 외부 링크를 주황색으로 만들기
+/*
+querySelectorAll을 했을 때 여러개이면 유사배열로 반환한다!!
+let links = document.querySelectorAll('a');
+for (let link of links){
+  let href = link.getAttribute('href');
+  if (!href) continue;
+  if (!href.includes('://')) continue;
+  if (!href.startsWith('http://internal.com')) continue;
+
+  link.style.color = 'orange';
+
+}
+
+또 다른 방법
+let selector = 'a[href*="://"]:not([href^="http://internal.com"])';
+let links = document.querySelectorAll(selector);
+
+links.forEach(link=>link.style.color = 'orange');
+*/
