@@ -27,13 +27,18 @@ let first = getNode('.first');
 
 // - elementNode.hasAttribute(name) – 속성 존재 여부 확인
 console.log(first.hasAttribute('class'));
+console.log(first.hasAttribute('alt'));
+console.log(first.hasAttribute('something'));
 // - elementNode.getAttribute(name) – 속성값을 가져옴
 console.log(first.getAttribute('class'));
+console.log(first.getAttribute('aria-label'));
+console.log(first.getAttribute('something'));
 // - elementNode.setAttribute(name, value) – 속성값을 변경함
 console.log(first.setAttribute('id','box'));
 console.log(first.setAttribute('some','hello'));
 // - elementNode.removeAttribute(name) – 속성값을 지움
 console.log(first.removeAttribute('id'));
+console.log(first.removeAttribute('aria-label'));
 // - elementNode.attributes – 열거 가능한(iterable) 속성 집합을 반환함
 console.log(first.attributes); //유사배열로 반환함.
 for (let value of first.attributes){ 
@@ -51,7 +56,6 @@ for (let value of first.attributes){
 
 // - elementNode.dataset
 
-first.dataset.play = 'playing'
 first.dataset.play = 'playiiing'
 
 
@@ -72,3 +76,6 @@ setAttr('.first','data-value','hello');
 console.assert(getAttr('.first','class') === 'first');
 console.log(attr('.first','id','container'));
 console.log(attr('.first','id'));
+
+
+

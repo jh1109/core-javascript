@@ -1,3 +1,5 @@
+
+
 /* ---------------------------------------------------------------------- */
 /* DOM Node Class                                                         */
 /* ---------------------------------------------------------------------- */
@@ -46,6 +48,7 @@ first.innerHTML += ' <em>like lion</em>';
 // - textContent **자주쓰임**
 console.log(first.textContent); //get
 // * 요소 내의 텍스트에 접근
+console.log(first.textContent);
 first.textContent = '멋쟁이 사자처럼' //set
 // * 태그는 제외하고 오로지 텍스트만 추출
 
@@ -56,6 +59,14 @@ first.textContent = '멋쟁이 사자처럼' //set
 // * hidden은 HTML 속성으로, DOM 프로퍼티로 사용 가능
 // * hidden 프로퍼티는 기술적으로 style="display:none"와 동일
 
-// first.hidden = true; //css에 display: inline-block으로 되어있으면 안사라짐. 
-getNode('h1').hidden = false;
+// first.hidden = true;
+//css에 display: inline-block으로 되어있으면 안사라짐. 
+// css에서의 우선순위가 더 높다고 평가돼서..
+/*
+setInterval(() => {
+  getNode('h1').hidden = !getNode('h1').hidden
+  
+}, 5000);
+*/
 //dom을 조작시키는게 많아질수록 성능은 안좋아짐.
+
