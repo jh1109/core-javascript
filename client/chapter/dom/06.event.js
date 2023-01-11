@@ -13,6 +13,7 @@
 /* 이벤트 추가/제거 --------------------------------------------------------- */
 
 const first = getNode('.first');
+// first.onclick = ()=>console.log('hit');
 
 function handler(){
   console.log('hit!');
@@ -21,7 +22,8 @@ function handler(){
   // getNode('.second').hidden = 'true';
 }
 
-// first.addEventListener('mouseout',handler);
+
+first.addEventListener('click',handler);
 
 const off = bindEvent('.first','click',handler);
 bindEvent('.second','click',off);
@@ -44,7 +46,12 @@ ground.addEventListener('click',function(e){
   ball.style.transform = `translate(${e.offsetX - ball.offsetWidth / 2}px,${e.offsetY - ball.offsetHeight / 2}px)`;
 });
 
+
 // mousemove, resize(창 크기가 변경될때마다 동작) : 컴퓨터 성능 저하의 원인 
 // 그래서 제어하기 위해 Debounce와 Throttle을 사용함.
 
-// emotion
+// 클릭된 요소 숨기기.
+// ground를 우클릭하면 없어지게 해보자.
+ground.addEventListener('contextmenu', ()=>ground.hidden = 'true');
+
+
