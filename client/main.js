@@ -1,6 +1,14 @@
 /* eslint no-undef: 'warn' */
 /* eslint no-unused-vars: 'off' */
 
+import {
+  getNode,
+  css,
+  addClass,
+  removeClass,
+  refError,
+  insertLast,
+} from "./lib/index.js";
 
 //1. 인풋 벨류값 가져오기
 //2. 이벤트 핸들러 연결하기

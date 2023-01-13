@@ -33,7 +33,7 @@ function setAttr(node,prop,value){
 }
 
 // get과 set을 함께해주는 함수 만들기
-function attr(node,prop,value){
+export function attr(node,prop,value){
   /*
   if(!value){
     return getAttr(node,prop);
