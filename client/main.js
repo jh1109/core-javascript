@@ -1,12 +1,35 @@
-import { diceAnimation, getNode, getNodes, disableElement, enableElement, visibleElement, invisibleElement } from "./lib/index.js";
+import { diceAnimation, getNode, getNodes, disableElement, enableElement, visibleElement, invisibleElement, insertLast, attr, clearContents, memo } from "./lib/index.js";
 
 // 배열의 구조 분해 할당
 const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
 // const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
 // const recordButton = getNode('.buttonGroup > button:nth-child(2)');
 const recordListWrapper = getNode('.recordListWrapper');
+memo('@tbody',()=>getNode('.recordListWrapper tbody'));
+
+/* -------------------------------------------------------------------------- */
+/*                                   render                                   */
+/* -------------------------------------------------------------------------- */
+let count = 0;
+let total = 0;
+
+function renderRecordListItem(){
+  let diceValue = +attr(memo('cube'),'data-dice');
+  let template = /* html */ `
+    <tr>
+      <td>${++count}</td>
+      <td>${diceValue}</td>
+      <td>${total += diceValue}</td>
+    </tr>
+  `;
+  insertLast(memo('@tbody'), template);
+  recordListWrapper.scrollTop = recordListWrapper.scrollHeight;
+}
 
 
+/* -------------------------------------------------------------------------- */
+/*                                    event                                   */
+/* -------------------------------------------------------------------------- */
 // IIFE
 const handleRollingDice = ( () => {
   let stopAnimation;
@@ -31,10 +54,14 @@ rollingDiceButton.addEventListener('click', handleRollingDice);
 
 function handleRecord(){
   visibleElement(recordListWrapper);
+  renderRecordListItem();
 }
 recordButton.addEventListener('click',handleRecord);
 
 function handleReset(){
   invisibleElement(recordListWrapper);
+  clearContents(memo('@tbody'));
+  count = 0;
+  total = 0;
 }
 resetButton.addEventListener('click',handleReset);
