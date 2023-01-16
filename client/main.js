@@ -1,4 +1,4 @@
-
+/*global gsap*/
 import { getInputValue, getNode, getRandom, clearContents, insertLast, typeError, isNumericString, showAlert, copy, addClass, removeClass } from "./lib/index.js";
 import { jujeobData } from "./data/data.js";
 
@@ -34,8 +34,6 @@ function clickSubmitHandler(e){
   
   clearContents(result);
   insertLast(result, pick);
-  
-  // result.addEventListener('click', navigator.clipboard.writeText(result.textContent));
 }
 
 function clickCopyHandler(){
@@ -47,13 +45,3 @@ function clickCopyHandler(){
 
 submit.addEventListener('click', clickSubmitHandler);
 result.addEventListener('click', clickCopyHandler);
-
-/*
-function clipboardCopy(node){
-  if (typeof node === 'string') node = getNode(node)
-  navigator.clipboard.writeText(node.textContent);
-  showAlert('.alert-success', '클립보드에 복사 되었습니다 !');
-}
-result.addEventListener('click', clipboardCopy(result));
-*/
-
