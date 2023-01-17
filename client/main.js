@@ -5,7 +5,7 @@ const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > 
 // const rollingDiceButton = getNode('.buttonGroup > button:nth-child(1)');
 // const recordButton = getNode('.buttonGroup > button:nth-child(2)');
 const recordListWrapper = getNode('.recordListWrapper');
-memo('@tbody',()=>getNode('.recordListWrapper tbody'));
+memo('@tbody',() => getNode('.recordListWrapper tbody'));
 
 /* -------------------------------------------------------------------------- */
 /*                                   render                                   */
@@ -34,7 +34,7 @@ function renderRecordListItem(){
 const handleRollingDice = ( () => {
   let stopAnimation;
   let isRolling = false;
-
+  
   return () => {
     if(!isRolling){
       stopAnimation = setInterval(diceAnimation, 200);
@@ -50,18 +50,17 @@ const handleRollingDice = ( () => {
 
   })()
 
+  function handleRecord(){
+    visibleElement(recordListWrapper);
+    renderRecordListItem();
+  }
+  function handleReset(){
+    invisibleElement(recordListWrapper);
+    clearContents(memo('@tbody'));
+    count = 0;
+    total = 0;
+  }
+
 rollingDiceButton.addEventListener('click', handleRollingDice);
-
-function handleRecord(){
-  visibleElement(recordListWrapper);
-  renderRecordListItem();
-}
 recordButton.addEventListener('click',handleRecord);
-
-function handleReset(){
-  invisibleElement(recordListWrapper);
-  clearContents(memo('@tbody'));
-  count = 0;
-  total = 0;
-}
 resetButton.addEventListener('click',handleReset);

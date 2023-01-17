@@ -1,7 +1,7 @@
 export const memo = (() => {
   const cache = {};
 
-  return (key, callback) =>{
+  return (key, callback) => {
     if(!callback) return cache[key];
     
     if(cache[key]){
