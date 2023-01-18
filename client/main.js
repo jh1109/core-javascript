@@ -1,4 +1,4 @@
-import { insertLast, xhrData, xhrPromise } from "./lib/index.js";
+import { delayP, insertLast, juhee, xhrData, xhrPromise } from "./lib/index.js";
 
 /*
 xhrPromise
@@ -20,3 +20,11 @@ xhrData.get(
   },
   (err)=>insertLast('body','데이터 로딩에 실패했습니다.'),
 )*/
+
+async function render(){
+  await delayP(2000);
+  let response = await juhee.get('https://jsonplaceholder.typicode.com/users/1')
+  console.log(response.data);
+
+}
+render()

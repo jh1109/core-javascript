@@ -7,7 +7,7 @@ const defaultOptions = {
   cache: 'no-cache',
   credential: 'same-origin',
   redirect:'follow',
-  referrerPolicy:'no-reffere',
+  referrerPolicy:'no-referrer',
   headers:{
     'Content-Type':'application/json; charset=UTF-8'
   }
@@ -38,13 +38,13 @@ export const juhee = async (options = {})=>{
 }
 
 juhee.get = (url, options) => {
-  juhee({
+  return juhee({
     url,
     ...options
   })
 }
 juhee.post = (url, body, options) => {
-  juhee({
+  return juhee({
     url,
     method: 'POST',
     body: JSON.stringify(body),
@@ -52,7 +52,7 @@ juhee.post = (url, body, options) => {
   })
 }
 juhee.put = (url, body, options) => {
-  juhee({
+  return juhee({
     url,
     method: 'PUT',
     body: JSON.stringify(body),
@@ -60,7 +60,7 @@ juhee.put = (url, body, options) => {
   })
 }
 juhee.delete = (url, options) => {
-  juhee({
+  return juhee({
     url,
     method: 'DELETE',
     ...options
