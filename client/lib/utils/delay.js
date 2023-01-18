@@ -96,4 +96,4 @@ async function delayA(){
   return '완료'
 }
 let result = await delayA();
-console.log(result);
+// console.log(result);
