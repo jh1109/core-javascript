@@ -27,7 +27,6 @@ delay(()=>{
 // 이를 보완하는 기능이 promise
 
 
-// 매개변수 자리에 상관없이 함수 매개변수 값을 넣고 싶다.
 const defaultOptions = {
   shouldReject: false,
   timeout: 1000,
@@ -37,31 +36,22 @@ const defaultOptions = {
 
 export function delayP(options = {}){
   let config = {...defaultOptions}; //얕은 복사
-  //객체 합성(위에 defaultOptions와 밑에 선언한 인수 값을 합쳐서 동작 시키고 싶다.)
-
+  
   //delayP(3000) 만 해도 나오게끔 해보자
   if(isNumber(options)){
     config.timeout = options;
   }
+  //객체 합성(위에 defaultOptions와 밑에 선언한 인수 값을 합쳐서 동작 시키고 싶다.)
   if (isObject(options)){
     config = {...config, ...options};
   }
-
-  // config = {...config, ...options};
   // 겹치는 값은 뒤에 있는 값으로 덮여쓰여짐.
+
   const {shouldReject, timeout, data, errorMessage} = config;
 
-  // const {shouldReject, data, errorMessage, timeout} = options;
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       !shouldReject ? resolve(data) : reject(errorMessage);
-      /*
-      if(!shouldReject){
-        resolve('성공!');
-      } else{
-        reject('실패!');
-      }
-      */
     }, timeout);
   })
 }
@@ -69,9 +59,9 @@ export function delayP(options = {}){
 /*
 delayP(
   {
-  // timeout: 1500,
-  // data: '진짜 성공!',
-  // shouldReject: true,
+  timeout: 1500,
+  data: '진짜 성공!',
+  shouldReject: false,
   })
 .then(res=>{
   console.log(res);
@@ -88,12 +78,41 @@ delayP().then(res=>{
 })
 */
 
+
 /* -------------------------------------------------------------------------- */
 /*                                 async await                                */
 /* -------------------------------------------------------------------------- */
 
 async function delayA(){
-  return '완료'
+  return '완료';
 }
 let result = await delayA();
 // console.log(result);
+
+async function 라면끓이기(){
+
+  try{
+
+    console.log('물 끓이기');
+
+    await delayP()
+    console.log('면 넣기');
+
+    await delayP()
+    console.log('스프 넣기');
+
+    await delayP()
+    console.log('파송송 계란 탁!');
+
+    // throw new Error('계란 껍질이 들어가버렸다!');
+    await delayP()
+    console.log('그릇에담기');
+
+  }catch(err){
+      console.log(err);
+  }
+
+}
+
+// 라면끓이기();
+
