@@ -87,3 +87,13 @@ delayP().then(res=>{
   console.log(err);
 })
 */
+
+/* -------------------------------------------------------------------------- */
+/*                                 async await                                */
+/* -------------------------------------------------------------------------- */
+
+async function delayA(){
+  return '완료'
+}
+let result = await delayA();
+console.log(result);
