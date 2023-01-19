@@ -14,6 +14,7 @@ first.style.top = '0px';
 function delay(callback,timeout = 1000){
   setTimeout(callback, timeout);
 }
+/*
 delay(()=>{
   first.style.top = '-100px';
   delay(()=>{
@@ -23,6 +24,7 @@ delay(()=>{
     })
   })
 })
+*/
 // callback 함수를 많이 쓰니 가독성이 좋아보이지 않는다.
 // 이를 보완하는 기능이 promise
 
