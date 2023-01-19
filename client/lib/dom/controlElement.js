@@ -1,0 +1,38 @@
+import { typeError } from "../error/typeError.js";
+import { isElement } from "../utils/typeOf.js";
+import { getNode } from "../dom/getNode.js";
+
+//JSDoc. 밑에 작성한 함수에 대한 설명을 추가해주는 기능
+/** 
+ * @function isElement checkElment
+ * @param {HTMLElement} node
+ * @return set disabled 
+ */
+
+export function disableElement(node){
+  if(!isElement(node)){
+    typeError('disableElement 함수의 인자는 DOM 요소 노드 이어야 합니다.');
+  }
+  node.disabled = true;
+}
+export function enableElement(node){
+  if(!isElement(node)){
+    typeError('disableElement 함수의 인자는 DOM 요소 노드 이어야 합니다.');
+  }
+  node.disabled = false;
+}
+
+export function visibleElement(node){
+  if (typeof node === 'string') node = getNode(node);
+  if(!isElement(node)){
+    typeError('visibleElement 함수의 인자는 DOM 요소 노드 이어야 합니다.');
+  }
+  node.hidden = false;
+}
+export function invisibleElement(node){
+  if (typeof node === 'string') node = getNode(node);
+  if(!isElement(node)){
+    typeError('invisibleElement 함수의 인자는 DOM 요소 노드 이어야 합니다.');
+  }
+  node.hidden = true;
+}
